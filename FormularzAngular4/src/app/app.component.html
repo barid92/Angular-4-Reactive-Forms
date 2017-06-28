@@ -2,8 +2,17 @@
   Formularze 
 </h1>
 <form [formGroup]="myForm" (ngSubmit)="addPost(myForm.value)">
-  Imie: <input formControlName="imie" type="text" name="imie"><br>
-  Nazwisko: <input formControlName="nazwisko" type="text" name="nazwisko"><br>
-  Godzina <input formControlName="godzina" type="text" name="godzina" placeholder="hh:mm"><br>
+  Imie: <input formControlName="imie" type="text" name="imie"
+    [ngClass]="{'in-valid': !myForm.controls['imie'].valid && myForm.controls['imie'].touched}">
+    <b class="alert" *ngIf="!myForm.controls['imie'].valid && myForm.controls['imie'].touched">
+      Wartość jest wymagana</b><br>
+  Nazwisko: <input formControlName="nazwisko" type="text" name="nazwisko"
+    [ngClass]="{'in-valid': !myForm.controls['nazwisko'].valid && myForm.controls['nazwisko'].touched}">
+    <b class="alert" *ngIf="!myForm.controls['nazwisko'].valid && myForm.controls['nazwisko'].touched">
+      Wartość jest wymagana i musi mieć przynajmniej 5 znaków</b><br>
+  Godzina <input formControlName="godzina" type="text" name="godzina" placeholder="hh:mm"
+    [ngClass]="{'in-valid': !myForm.controls['godzina'].valid && myForm.controls['godzina'].touched}">
+    <b class="alert" *ngIf="!myForm.controls['godzina'].valid && myForm.controls['godzina'].touched">
+      Wartość jest wymagana i musi być podana w poprawnym formacie</b><br>
   <input [disabled]="!myForm.valid" type="submit" value="Zastosuj">
 </form>
