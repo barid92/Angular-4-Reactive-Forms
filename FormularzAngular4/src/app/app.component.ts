@@ -16,4 +16,8 @@ export class AppComponent {
       'godzina' : [null, Validators.compose([Validators.required, Validators.pattern("([0-1]{1}[0-9]{1}|20|21|22|23):[0-5]{1}[0-9]{1}")])]
     });
   }
+
+    addPost(post) {
+    alert("Post:"+post.imie + " " + post.nazwisko + " " + post.godzina)
+  }
 }

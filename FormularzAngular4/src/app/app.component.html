@@ -1,9 +1,9 @@
 <h1>
   Formularze 
 </h1>
-<form>
-  Imie: <input type="text" name="imie"><br>
-  Nazwisko: <input type="text" name="nazwisko"><br>
-  Godzina <input type="text" name="godzina" placeholder="hh:mm"><br>
-  <input type="submit" value="Zastosuj">
+<form [formGroup]="myForm" (ngSubmit)="addPost(myForm.value)">
+  Imie: <input formControlName="imie" type="text" name="imie"><br>
+  Nazwisko: <input formControlName="nazwisko" type="text" name="nazwisko"><br>
+  Godzina <input formControlName="godzina" type="text" name="godzina" placeholder="hh:mm"><br>
+  <input [disabled]="!myForm.valid" type="submit" value="Zastosuj">
 </form>
